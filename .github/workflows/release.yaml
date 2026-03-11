@@ -27,3 +27,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT_GORELEASER }}
           KOMAC_GITHUB_TOKEN: ${{ secrets.GH_PAT_KOMAC }}
+      - name: Test Komac script output
+        run: cat komac.txt
