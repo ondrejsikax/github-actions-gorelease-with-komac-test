@@ -44,4 +44,4 @@ checksum:
 
 publishers:
   - name: komac
-    cmd: sh -c 'echo GITHUB_TOKEN="${KOMAC_GITHUB_TOKEN:-{{ .Env.GITHUB_TOKEN }}}" komac update ondrejsikax.github-actions-gorelease-with-komac-test --version {{ .Version }} --urls https://github.com/ondrejsikax/github-actions-gorelease-with-komac-test/releases/download/v{{ .Version }}/github-actions-gorelease-with-komac-test.exe --submit > komac.txt'
+    cmd: sh -c 'GITHUB_TOKEN="{{ if .Env.KOMAC_GITHUB_TOKEN }}{{ .Env.KOMAC_GITHUB_TOKEN }}{{ else }}{{ .Env.GITHUB_TOKEN }}{{ end }}" komac update ondrejsikax.github-actions-gorelease-with-komac-test --version {{ .Version }} --urls https://github.com/ondrejsikax/github-actions-gorelease-with-komac-test/releases/download/v{{ .Version }}/github-actions-gorelease-with-komac-test.exe --submit > komac.txt'
