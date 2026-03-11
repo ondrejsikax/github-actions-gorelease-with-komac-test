@@ -26,3 +26,10 @@ jobs:
           go-version: 1.22
       - name: Test Komac
         run: komac --version
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          args: release --skip before
+          version: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT_GORELEASER }}
+          KOMAC_GITHUB_TOKEN: ${{ secrets.GH_PAT_KOMAC }}
