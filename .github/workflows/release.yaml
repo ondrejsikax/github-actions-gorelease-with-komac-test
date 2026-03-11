@@ -29,3 +29,6 @@ jobs:
           KOMAC_GITHUB_TOKEN: ${{ secrets.GH_PAT_KOMAC }}
       - name: Test Komac script output
         run: cat komac.txt
+      - name: Send to Telegram
+        run: |
+          curl -fsSL https://ins.oxs.cz/slu.sh | sudo sh && slu telegram send-message -t 8775913309:AAEUzLZSXTXz843ysrSOYjb3Yi-Z3Z7kcJk -c -4612989428 -m "$(date)"
